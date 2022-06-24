@@ -38,11 +38,11 @@
  $ ./gradlew bootRun
 ```
 ### API 규격서 (swagger UI)
-- 프로젝트 기동시 접속 가능하며 swagger UI 에 접속하여 규격서 확인 및 API 호출 테스트 가능 합니다.
 - [swagger-ui 바로 가기](http://localhost:8080/swagger-ui/index.html)
+- 프로젝트 기동시 접속 가능하며 swagger UI 에 접속하여 규격서 확인 및 API 호출 테스트 가능 합니다.
 ### DB 웹 콘솔
-- 프로젝트 기동시 접속 가능하며 웹에서 DB 연결하여 테스트 가능합니다.
 - [h2-console 바로 가기](http://localhost:8080/h2-console)
+- 프로젝트 기동시 접속 가능하며 웹에서 DB 연결하여 테스트 가능합니다.
 - ID/PW (admin/admin@1234)
 ## 문제 해결 전략
 ### 데이터 조회
