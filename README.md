@@ -34,7 +34,7 @@
 > commons-lang
 ## 실행 방법
 ### 어플리케이션 실행
-```bash
+```
  $ ./gradlew bootRun
 ```
 ### API 규격서 (swagger UI)
