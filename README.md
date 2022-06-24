@@ -2,7 +2,8 @@
 고객 문의 서비스를 위한 API를 제공하는 프로젝트 입니다.
 
 ## 프로젝트 구성
-### 프로젝트 구조
+Spring Boot + Java
+### 구조
 - configuration : 설정 정보
 - controller : 컨트롤러
 - queue : 큐(producer, receiver)에 메세지 추가, 처리를 위한 로직
