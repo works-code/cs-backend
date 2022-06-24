@@ -9,9 +9,9 @@
 - repository : JPA를 통한 데이터 조작을 위한 저장소 인터 페이스 정의
 - service : 비즈니스 로직이 있는 서비스
 - vo : value object
-. entity : DB 테이블 관련 클래스
-. enums : enum (값의 범위를 한눈에 보기 위함, 범위 이외의 값을 사용 하여 발생하는 이슈를 방지하기 위함)
-. validation : 값 유효성 체크를 위한 클래스
+-- entity : DB 테이블 관련 클래스
+-- enums : enum (값의 범위를 한눈에 보기 위함, 범위 이외의 값을 사용 하여 발생하는 이슈를 방지하기 위함)
+-- validation : 값 유효성 체크를 위한 클래스
 2. 사용 기술
 - 큐
 > activemq
