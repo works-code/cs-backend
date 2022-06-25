@@ -35,6 +35,11 @@ Spring Boot + Java
 > commons-lang
 ## 실행 방법
 ### 어플리케이션 실행
+#### 빌드
+```
+ $ ./gradlew build
+```
+#### 실행
 ```
  $ ./gradlew bootRun
 ```
