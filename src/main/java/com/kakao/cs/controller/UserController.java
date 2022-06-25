@@ -2,7 +2,7 @@ package com.kakao.cs.controller;
 
 import com.kakao.cs.service.CommonService;
 import com.kakao.cs.service.UserService;
-import com.kakao.cs.vo.Entity.User;
+import com.kakao.cs.vo.entity.User;
 import com.kakao.cs.vo.validation.UserVaildation;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;

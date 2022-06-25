@@ -2,10 +2,9 @@ package com.kakao.cs.service;
 
 import com.kakao.cs.queue.producer.InquiryProducer;
 import com.kakao.cs.repository.InquiryRepository;
-import com.kakao.cs.vo.Entity.Inquiry;
+import com.kakao.cs.vo.entity.Inquiry;
 import com.kakao.cs.vo.enums.QueueName;
 import com.kakao.cs.vo.validation.InquiryValidation;
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +52,7 @@ public class InquiryService {
 
     public boolean checkAndInquiryCounselor(InquiryValidation.CounselorSet counselor){
         Inquiry inquiry = inquiryRepository.findBySeq(counselor.getInquirySeq());
-        if(ObjectUtils.isEmpty(inquiry) || StringUtils.isEmpty(inquiry.getCounselorId())){
+        if(!ObjectUtils.isEmpty(inquiry) && StringUtils.isEmpty(inquiry.getCounselorId())){
             inquiry.setCounselorId(counselor.getCounselorId());
             producer.pushInquiry(QueueName.SetInquiryCounselor.getName(), inquiry);
             return true;

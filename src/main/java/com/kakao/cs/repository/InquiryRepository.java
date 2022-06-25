@@ -1,6 +1,6 @@
 package com.kakao.cs.repository;
 
-import com.kakao.cs.vo.Entity.Inquiry;
+import com.kakao.cs.vo.entity.Inquiry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

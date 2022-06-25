@@ -1,7 +1,7 @@
 package com.kakao.cs.service;
 
 import com.kakao.cs.repository.UserRepository;
-import com.kakao.cs.vo.Entity.User;
+import com.kakao.cs.vo.entity.User;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

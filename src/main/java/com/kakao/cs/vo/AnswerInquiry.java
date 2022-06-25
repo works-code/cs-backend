@@ -1,7 +1,7 @@
 package com.kakao.cs.vo;
 
-import com.kakao.cs.vo.Entity.Answer;
-import com.kakao.cs.vo.Entity.Inquiry;
+import com.kakao.cs.vo.entity.Answer;
+import com.kakao.cs.vo.entity.Inquiry;
 import lombok.Data;
 
 @Data

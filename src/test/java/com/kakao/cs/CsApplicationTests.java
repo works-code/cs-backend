@@ -3,9 +3,9 @@ package com.kakao.cs;
 import com.kakao.cs.service.AnswerService;
 import com.kakao.cs.service.InquiryService;
 import com.kakao.cs.service.UserService;
-import com.kakao.cs.vo.Entity.Answer;
-import com.kakao.cs.vo.Entity.Inquiry;
-import com.kakao.cs.vo.Entity.User;
+import com.kakao.cs.vo.entity.Answer;
+import com.kakao.cs.vo.entity.Inquiry;
+import com.kakao.cs.vo.entity.User;
 import com.kakao.cs.vo.validation.AnswerValidation;
 import com.kakao.cs.vo.validation.InquiryValidation;
 import org.junit.Assert;
@@ -33,13 +33,12 @@ class CsApplicationTests {
     @Test
     void 문의글_등록_조회_테스트() {
         // 문의 등록
-        String customerId = "yoolee";
+        String customerId = "kakaopay";
         inquiryService.setInquiry(Inquiry.builder()
                 .customerId(customerId)
                 .title("제목")
                 .content("내용")
                 .build());
-
         // 문의 조회 (문의 등록한 이력이 는 사용자 ID 조회)
         List<Inquiry> results = inquiryService.getInquirysByCostomerId(customerId);
         Assert.assertFalse(CollectionUtils.isEmpty(results));
@@ -59,7 +58,7 @@ class CsApplicationTests {
 
     @Test
     void 문의글_상담사_등록_테스트() {
-        String customerId = "yoolee";
+        String customerId = "testID";
         Inquiry inquiry = Inquiry.builder()
                 .customerId(customerId)
                 .title("제목")
@@ -67,14 +66,18 @@ class CsApplicationTests {
                 .build();
         // 문의글 등록
         inquiryService.setInquiry(inquiry);
+        // 문의글 조회
+        Inquiry list = inquiryService.getInquirysByCostomerId("testID").get(0);
 
         // 상담사 등록 (상담사가 지정되지 않은 문의글 일시)
         InquiryValidation.CounselorSet counselor = new InquiryValidation.CounselorSet();
-        counselor.setInquirySeq(1L);
+        counselor.setInquirySeq(list.getSeq());
         counselor.setCounselorId("counselor");
         Assert.assertTrue(inquiryService.checkAndInquiryCounselor(counselor));
 
         // 상담사 등록 (상담사가 지정된 문의글 일시)
+        inquiry.setCounselorId("counselor");
+        inquiryService.setCounselorId(inquiry);
         Assert.assertFalse(inquiryService.checkAndInquiryCounselor(counselor));
     }
 
@@ -99,6 +102,10 @@ class CsApplicationTests {
         Assert.assertTrue(answerService.checkAndSetAnswerByQueue(answer));
 
         // 답변 등록 (답변이 이미 등록된 경우)
+        answerService.setAnswer(inquiry, Answer.builder()
+                .counselorName("상담사")
+                .counselorId("admin")
+                .content("답변").build());
         Assert.assertFalse(answerService.checkAndSetAnswerByQueue(answer));
 
         // 답변 조회
@@ -119,9 +126,21 @@ class CsApplicationTests {
                 .content("내용")
                 .build());
 
+        Inquiry inquiry = Inquiry.builder()
+                .customerId("answerId")
+                .title("제목")
+                .content("내용")
+                .build();
+        inquiryService.setInquiry(inquiry);
+        answerService.setAnswer(inquiry, Answer.builder()
+                .counselorName("상담사")
+                .counselorId("admin")
+                .content("답변").build());
+
         List<Inquiry> inquiries = inquiryService.getInquirysNotExistAnswer();
         List<String> noAnswerCustomerIds = inquiries.stream().map(s -> s.getCustomerId()).collect(Collectors.toList());
-        Assert.assertFalse(noAnswerCustomerIds.contains("testId"));
+        Assert.assertTrue(noAnswerCustomerIds.contains("testId"));
+        Assert.assertFalse(noAnswerCustomerIds.contains("answerId"));
     }
 
 

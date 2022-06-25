@@ -2,7 +2,7 @@ package com.kakao.cs.controller;
 
 import com.kakao.cs.service.AnswerService;
 import com.kakao.cs.service.CommonService;
-import com.kakao.cs.vo.Entity.Answer;
+import com.kakao.cs.vo.entity.Answer;
 import com.kakao.cs.vo.validation.AnswerValidation;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;

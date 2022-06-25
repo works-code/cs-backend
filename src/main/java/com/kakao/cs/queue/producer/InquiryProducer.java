@@ -1,7 +1,7 @@
 package com.kakao.cs.queue.producer;
 
 import com.google.gson.Gson;
-import com.kakao.cs.vo.Entity.Inquiry;
+import com.kakao.cs.vo.entity.Inquiry;
 import com.kakao.cs.vo.validation.InquiryValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;

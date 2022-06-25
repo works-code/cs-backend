@@ -19,5 +19,7 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  activemq:
+    broker-url: vm://localhost?broker.persistent=false&broker.useShutdownHook=false
 logging.level:
   org.hibernate.SQL: debug

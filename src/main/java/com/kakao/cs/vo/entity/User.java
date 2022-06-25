@@ -1,4 +1,4 @@
-package com.kakao.cs.vo.Entity;
+package com.kakao.cs.vo.entity;
 
 import lombok.Builder;
 import lombok.Getter;
